@@ -1,0 +1,15 @@
+package tttt
+
+import (
+	"github.com/tidwall/gjson"
+	"fmt"
+)
+
+func main()  {
+	s := `{"code":"0","msg":[{"port":"47625","ip":"117.57.90.158"},{"port":"20841","ip":"60.167.23.226"},{"port":"23233","ip":"113.121.240.62"},{"port":"37184","ip":"49.72.157.4"},{"port":"20344","ip":"117.63.206.54"}]}`
+	result := gjson.Get(s, "msg")
+	result.ForEach(func(key, value gjson.Result) bool {
+		fmt.Println(value.Get("ip").String(), value.Get("port").String(), value.Get("").String())
+		return true
+	})
+}
